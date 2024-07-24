@@ -1,0 +1,41 @@
+.game-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+
+    button {
+        margin-left: 30px;
+    }
+}
+
+.game-body {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20%;
+
+    .cards {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    
+        .card {
+            cursor: pointer;
+            border: solid lightgray 1px;
+            width: 18%;
+        }
+    }
+}
+
+.game-actions {
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        margin: 0px 10px;
+    }
+}

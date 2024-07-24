@@ -1,0 +1,39 @@
+<div class="game-header">
+    <h1>Blackjack</h1>
+    <div class="game-status">
+        <b>Winner</b>: {{ winner }}
+
+    </div>
+    <div class="stats">
+        Hand: 
+        {{ playerHandValue}}
+        <span *ngIf="playerHasAce && playerHandValue + 10 <= 21"> / {{ playerHandValue + 10 }}</span>
+        <button (click)="startGame()">New game</button>
+    </div>
+</div>
+
+<div class="game-body">
+    <div class="hands player-hand">
+        <h2>Player</h2>
+        <div class="cards">
+            <img *ngFor="let card of playerCards" [src]="'images/cards/' + card + '.png'" alt="{{ card }}" class="card">
+        </div>
+    </div>
+    <div class="hands dealer-hand">
+        <h2>Crupier</h2>
+        <div class="cards">
+            <img *ngFor="let card of dealerCards; let i = index"
+                [src]="playerTurn && i === 0 ?  'images/cards/back.png' : 'images/cards/' + card + '.png'"
+                alt="Card image">
+        </div>
+    </div>
+</div>
+
+<div class="game-actions">
+    <button *ngIf="winner === 'Pending'" (click)="hit()">Hit</button>
+    <button *ngIf="winner === 'Pending'" (click)="stand()">Stand</button>
+    <button *ngIf="winner === 'Pending'" (click)="doubleDown()">Double down</button>
+    <button *ngIf="winner === 'Pending'" (click)="split()" [disabled]="!canSplit()">Split</button>
+    <button *ngIf="winner === 'Pending'" (click)="surrender()">Surrender</button>
+    <button *ngIf="winner === 'Pending'" (click)="insurance()" [disabled]="!canTakeInsurance()">Insurance</button>
+</div>
